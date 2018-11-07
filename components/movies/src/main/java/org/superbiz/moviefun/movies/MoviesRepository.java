@@ -26,10 +26,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import javax.persistence.metamodel.EntityType;
+
 import java.util.List;
 
 @Repository
-public class MoviesBean {
+public class MoviesRepository {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -39,6 +40,7 @@ public class MoviesBean {
     public Movie find(Long id) {
         return entityManager.find(Movie.class, id);
     }
+
 
     @Transactional
     public void addMovie(Movie movie) {

@@ -2,28 +2,33 @@ package org.superbiz.moviefun;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.superbiz.moviefun.albums.Album;
+/*import org.superbiz.moviefun.albums.Album;
 import org.superbiz.moviefun.albums.AlbumFixtures;
-import org.superbiz.moviefun.albums.AlbumsBean;
-import org.superbiz.moviefun.movies.Movie;
-import org.superbiz.moviefun.movies.MovieFixtures;
-import org.superbiz.moviefun.movies.MoviesBean;
+import org.superbiz.moviefun.albums.AlbumsBean;*/
+import org.superbiz.moviefun.movies.MoviesRepository;
+import org.superbiz.moviefun.moviesapi.MovieFixtures;
+
 
 import java.util.Map;
 
 @Controller
 public class HomeController {
 
-    private final MoviesBean moviesBean;
-    private final AlbumsBean albumsBean;
-    private final MovieFixtures movieFixtures;
-    private final AlbumFixtures albumFixtures;
+    private final MoviesRepository moviesRepository;
 
-    public HomeController(MoviesBean moviesBean, AlbumsBean albumsBean, MovieFixtures movieFixtures, AlbumFixtures albumFixtures) {
-        this.moviesBean = moviesBean;
+    private final MovieFixtures movieFixtures;
+
+
+    /*public HomeController(MoviesRepository moviesRepository, AlbumsBean albumsBean, MovieFixtures movieFixtures, AlbumFixtures albumFixtures) {
+        this.moviesRepository = moviesRepository;
         this.albumsBean = albumsBean;
         this.movieFixtures = movieFixtures;
         this.albumFixtures = albumFixtures;
+    }*/
+    public HomeController(MoviesRepository moviesRepository, MovieFixtures movieFixtures ) {
+        this.moviesRepository = moviesRepository;
+        this.movieFixtures = movieFixtures;
+
     }
 
     @GetMapping("/")
@@ -31,19 +36,20 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/setup")
+    /*@GetMapping("/setup")
     public String setup(Map<String, Object> model) {
         for (Movie movie : movieFixtures.load()) {
-            moviesBean.addMovie(movie);
+            //moviesRepository.addMovie(movie);
+            moviesRepository.addMovie(movie);
         }
 
         for (Album album : albumFixtures.load()) {
             albumsBean.addAlbum(album);
         }
 
-        model.put("movies", moviesBean.getMovies());
+        model.put("movies", moviesRepository.getMovies());
         model.put("albums", albumsBean.getAlbums());
 
         return "setup";
-    }
+    }*/
 }

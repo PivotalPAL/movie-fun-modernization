@@ -1,6 +1,7 @@
-package org.superbiz.moviefun;
+package org.superbiz.cloudfoundry;
 
 import org.junit.Test;
+import org.superbiz.cloudfoundry.ServiceCredentials;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
